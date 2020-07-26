@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-angular';
+  public name: string = 'Prateek';
+  constructor(){}
+  change(){this.name = 'Gumasta';}
 }
