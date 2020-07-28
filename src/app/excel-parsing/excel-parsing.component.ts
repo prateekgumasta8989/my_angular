@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ExcelService } from './../excel.service';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import * as XLSX from 'xlsx';
+
 
 @Component({
   selector: 'app-excel-parsing',
@@ -7,7 +9,14 @@ import * as XLSX from 'xlsx';
   styleUrls: ['./excel-parsing.component.scss'],
 })
 export class ExcelParsingComponent implements OnInit {
-  constructor() {}
+  public jsonDataFromExcel: any;
+  //@Output() sendJsonData = new EventEmitter<any>();
+  
+
+  /*sendData() {
+    this.sendJsonData.emit(this.jsonDataFromExcel);
+  }*/
+  constructor(private excelService: ExcelService) {}
 
   ngOnInit(): void {}
 
@@ -34,9 +43,17 @@ export class ExcelParsingComponent implements OnInit {
       const wb: XLSX.WorkBook = XLSX.read(bstr, { type: 'binary' });
       const wsName: string = wb.SheetNames[0];
       const ws: XLSX.WorkSheet = wb.Sheets[wsName];
-      let myDataInJson = XLSX.utils.sheet_to_json(ws, { raw: true });
+      this.jsonDataFromExcel = XLSX.utils.sheet_to_json(ws, { raw: true });
+      //this.sendJson = this.jsonDataFromExcel;
+      //this.sendData();
+      //this.excelService.exportAsExcelFile(this.jsonDataFromExcel, 'newOne');
     };
     let file = target.files[0];
     reader.readAsBinaryString(file);
+  }
+
+
+  getJsonData(){
+    return this.jsonDataFromExcel;
   }
 }
