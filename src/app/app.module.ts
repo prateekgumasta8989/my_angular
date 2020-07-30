@@ -8,13 +8,15 @@ import { MakingZipComponent } from './making-zip/making-zip.component';
 import { LinksComponent } from './links/links.component';
 
 import { ExcelExportModule } from '@progress/kendo-angular-excel-export';
+import { TimerComponent } from './timer/timer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ExcelParsingComponent,
     MakingZipComponent,
-    LinksComponent
+    LinksComponent,
+    TimerComponent
   ],
   imports: [
     BrowserModule,
