@@ -1,4 +1,19 @@
 <p>making-zip works!</p>
 <app-excel-parsing ></app-excel-parsing>
 
-<button (click)="getJsonFromExcelParsing()">Generate Zip</button>
+<button (click)="getJsonFromExcelParsing(excelexportClickedExportButton)">Generate Zip</button>
+
+<kendo-excelexport [data]="exportDataExcel" [collapsible]="true" fileName="data.xlsx" #excelexportClickedExportButton>
+    <kendo-excelexport-column field="Company" [locked]="true" title="Company" [width]="200">
+    </kendo-excelexport-column>
+    <kendo-excelexport-column field="FirstName" title="First Name" [width]="350">
+    </kendo-excelexport-column>
+    <kendo-excelexport-column field="LastName" title="Last Name" [width]="350">
+    </kendo-excelexport-column>    
+    <kendo-excelexport-column-group title="List Details" [headerCellOptions]="{ textAlign: 'center' }">
+        <kendo-excelexport-column field="list.Title" title="Title" [width]="120">
+        </kendo-excelexport-column>
+        <kendo-excelexport-column field="list.Email" title="Email" [width]="120">
+        </kendo-excelexport-column>
+    </kendo-excelexport-column-group>    
+</kendo-excelexport>

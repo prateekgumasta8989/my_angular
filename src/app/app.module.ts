@@ -7,6 +7,8 @@ import { ExcelParsingComponent } from './excel-parsing/excel-parsing.component';
 import { MakingZipComponent } from './making-zip/making-zip.component';
 import { LinksComponent } from './links/links.component';
 
+import { ExcelExportModule } from '@progress/kendo-angular-excel-export';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +18,8 @@ import { LinksComponent } from './links/links.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ExcelExportModule
   ],
   providers: [],
   bootstrap: [AppComponent]
